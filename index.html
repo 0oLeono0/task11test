@@ -1,1959 +1,11 @@
-<!doctype html>
-<html lang="en" amp="">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
-    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
-    <title>Hello, AMPs</title>
-    <link rel="canonical" href="https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <style amp-boilerplate>
-        body {
-            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
-            animation: -amp-start 8s steps(1, end) 0s 1 normal both
-        }
-
-        @-webkit-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-moz-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-ms-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @-o-keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @keyframes -amp-start {
-            from {
-                visibility: hidden
-            }
-
-            to {
-                visibility: visible
-            }
-        }
-
-        @font-face {
-            font-family: 'Dosis';
-            src: url(./fonts/Dosis-Regular.ttf) format('woff2');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Open-Sans';
-            src: url(./fonts/OpenSans-Regular.ttf) format('woff2');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Open-Sans';
-            src: url(./fonts/OpenSans-Bold.ttf) format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Myriad Pro';
-            src: url(./fonts/MYRIADPRO-REGULAR.OTF) format('woff2');
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            box-sizing: border-box;
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        button {
-            background: none;
-            border: none;
-        }
-
-        a {
-            text-decoration: none;
-            color: #000000;
-        }
-
-        li {
-            list-style-type: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            margin: 0;
-            font-weight: normal;
-        }
-
-        ul {
-            margin: 0;
-        }
-
-        input,
-        textarea {
-            border: 0;
-            outline: 0;
-        }
-
-        body {
-            margin: 0;
-            font-family: Dosis;
-            font-weight: 400;
-            background-color: #ffffff;
-            color: #000000;
-            width: 100%;
-            max-width: 100%;
-        }
-
-        .container {
-            position: relative;
-            box-sizing: border-box;
-            margin: 0 auto;
-            max-width: 2000px;
-            padding: 1.15vw 20vw 0.4vw 20vw;
-        }
-
-        *:focus {
-            outline: none;
-        }
-
-        @media (max-width: 1440px) {
-            .container {
-                max-width: 1440px;
-                padding: 0 5vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                max-width: 768px;
-                padding: 5vw 9vw;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .container {
-                max-width: 375px;
-                padding: 4vw 4vw;
-            }
-        }
-
-        .header {
-            background-image: url(./img/PNG/headerBG.png);
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: top center;
-            height: 53.1vw;
-        }
-
-        .header__container {
-            background-color: rgba(0, 8, 12, 0.1);
-            filter: drop-shadow(1.5px 2.598px 0px rgba(0, 0, 0, 0.17));
-        }
-
-        .header .nav__list {
-            display: flex;
-            justify-content: space-between;
-            padding: 0;
-        }
-
-        .header .nav__item:hover .nav__link {
-            color: #000000;
-        }
-
-        .header .nav__item:hover .nav__underline {
-            opacity: 1;
-        }
-
-        .header .nav__link {
-            display: inline-flex;
-            flex-direction: column;
-            font-size: 16px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: color .3s;
-            color: #606060;
-        }
-
-        .header .nav__underline {
-            background-color: #000000;
-            display: inline-block;
-            height: 2px;
-            margin-top: 7px;
-            opacity: 0;
-            transition: opacity, .3s;
-            width: 100%;
-        }
-
-        @media (max-width: 1440px) {
-            .header {
-                height: 73.75vw;
-            }
-
-            .header .nav__link {
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                height: 100%;
-            }
-
-            .header .nav {
-                text-align: right;
-            }
-
-            .header .nav__list {
-                flex-direction: column;
-            }
-        }
-
-        .discography {
-            background-image: url(./img/JPG/disBG.jpg);
-            background-repeat: no-repeat;
-            background-position: center bottom;
-        }
-
-        .discography__container {
-            padding-top: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .discography__header {
-            position: relative;
-            padding: 0.25vw 3.5vw;
-            font-weight: normal;
-            line-height: 35px;
-            text-align: center;
-            font-size: 50px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 2.75vw;
-            background-clip: text;
-            color: transparent;
-            background-image: url(./img/JPG/disBG.jpg);
-            background-position: left bottom;
-        }
-
-        .discography__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .discography__header-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 7.25vw;
-        }
-
-        .discography__header-text {
-            max-width: 36.75vw;
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            text-align: center;
-        }
-
-        .discography__block {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5vw;
-        }
-
-        .discography__block:last-child {
-            margin-bottom: 20.5vw;
-        }
-
-        .discography__date-block {
-            width: 25vw;
-            box-sizing: border-box;
-            padding-top: 1.25vw;
-        }
-
-        .discography__date-block-date {
-            opacity: .7;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-            margin-bottom: 0.25vw;
-        }
-
-        .discography__date-block-underline {
-            display: block;
-            height: 1px;
-            background-color: #000000;
-            margin-bottom: 0.25vw;
-        }
-
-        .discography__date-block-name {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-        }
-
-        .discography__about-block {
-            width: 33.7vw;
-        }
-
-        .discography__about-block-header {
-            font-size: 23px;
-            letter-spacing: 0;
-            line-height: 35px;
-            font-family: Open-Sans;
-            margin-bottom: 0.5vw;
-        }
-
-        .discography__about-block-text {
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            font-family: Open-Sans;
-            color: #acacac;
-            margin-bottom: 1.25vw;
-        }
-
-        .discography__about-block-btn {
-            cursor: pointer;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-            color: #000000;
-            padding: 1vw 4vw;
-        }
-
-        .discography__about-block-btn.btn1 {
-            background-image: url(./img/PNG/btnBG1.png);
-            color: #ffffff;
-        }
-
-        .discography__about-block-btn.btn2 {
-            background-image: url(./img/PNG/btnBG2.png);
-        }
-
-        .discography__about-block-btn.btn3 {
-            margin-top: 3.75vw;
-            background-image: url(./img/PNG/btnBG3.png);
-        }
-
-        @media (max-width: 1440px) {
-            .discography__date-block {
-                width: 40vw;
-                box-sizing: border-box;
-                padding-top: 1.25vw;
-            }
-
-            .discography__about-block {
-                width: 45vw;
-            }
-
-            .discography__block:last-child {
-                margin-bottom: 30vw;
-            }
-
-            .discography__header {
-                font-size: 35px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .discography__date-block {
-                display: none;
-            }
-
-            .discography__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .discography__about-block-btn {
-                padding: 2vw 8vw;
-            }
-
-            .discography__block:last-child {
-                margin-bottom: 70vw;
-            }
-
-            .discography__header {
-                font-size: 30px;
-            }
-
-            .discography__header-text {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .discography__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .discography__about-block-header {
-                font-size: 16px;
-                line-height: 25px;
-            }
-
-            .discography__about-block-text {
-                font-size: 12px;
-                line-height: 20px;
-            }
-
-            .discography__about-block-btn {
-                font-size: 12px;
-                padding: 3vw 12vw;
-            }
-
-            .discography__block {
-                margin-bottom: 20vw;
-            }
-
-            .discography__block:last-child {
-                margin-bottom: 100vw;
-            }
-
-            .discography__header {
-                font-size: 20px;
-            }
-
-            .discography__header-text {
-                max-width: 100%;
-                font-size: 12px;
-                line-height: 20px;
-            }
-        }
-
-        .concert {
-            background-image: url(./img/JPG/concertBG.jpg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-        }
-
-        .concert__container {
-            padding-top: 8.25vw;
-            padding-bottom: 12.25vw;
-        }
-
-        .concert__header {
-            position: relative;
-            padding: 0.25vw 3.5vw;
-            font-weight: normal;
-            line-height: 35px;
-            text-align: center;
-            font-size: 50px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 2.75vw;
-            background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(#62a2ad, #8dbab3);
-        }
-
-        .concert__header-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 23.5vw;
-        }
-
-        .concert__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .concert__header-text {
-            max-width: 36.75vw;
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            text-align: center;
-        }
-
-        .concert__date-block {
-            width: 19.75vw;
-            box-sizing: border-box;
-            margin-bottom: 4.25vw;
-        }
-
-        .concert__date-date {
-            opacity: .7;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-            margin-bottom: .6vw;
-        }
-
-        .concert__date-underline {
-            display: block;
-            height: 1px;
-            background-color: #000000;
-            margin-bottom: 0.5vw;
-        }
-
-        .concert__date-name {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-        }
-
-        .concert__about-block {
-            width: 33.25vw;
-        }
-
-        .concert__about-header {
-            font-size: 23px;
-            letter-spacing: 0;
-            line-height: 35px;
-            font-family: Open-Sans;
-            margin-bottom: 1.25vw;
-        }
-
-        .concert__about-text {
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            font-family: Open-Sans;
-            color: #acacac;
-            margin-bottom: 1.75vw;
-        }
-
-        .concert__about-btn {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            line-height: 24px;
-            color: #000000;
-            font-weight: 700;
-            font-family: Open-Sans;
-            padding: 1vw 2.75vw;
-            border: 1px solid #636363;
-            background-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .concert__about-btn-arrow {
-            height: .5vw;
-            width: 0.25vw;
-            position: relative;
-            margin-left: .75vw;
-        }
-
-        .concert__about-btn-arrow-top,
-        .concert__about-btn-arrow-bottom {
-            background: #000000;
-            height: 1px;
-            left: -0.125vw;
-            position: absolute;
-            top: .25vw;
-            width: 5px;
-        }
-
-        .concert__about-btn-arrow-top {
-            top: .25vw;
-            transform: rotate(45deg);
-            transform-origin: bottom right;
-        }
-
-        .concert__about-btn-arrow-bottom {
-            transform: rotate(-45deg);
-            transform-origin: top right;
-        }
-
-        @media (max-width: 1440px) {
-            .concert__header {
-                font-size: 35px;
-            }
-
-            .concert__date-block {
-                width: 35vw;
-            }
-
-            .concert__about-block {
-                width: 55vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .concert__header-block {
-                margin-bottom: 10vw;
-            }
-
-            .concert__date-block {
-                display: none;
-            }
-
-            .concert__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .concert__about-btn {
-                padding: 2vw 8vw;
-            }
-
-            .concert__block:last-child {
-                margin-bottom: 70vw;
-            }
-
-            .concert__header {
-                font-size: 30px;
-            }
-
-            .concert__header-text {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .concert {
-                background-size: cover;
-            }
-
-            .concert__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .concert__about-header {
-                font-size: 16px;
-                line-height: 25px;
-            }
-
-            .concert__about-text {
-                font-size: 12px;
-                line-height: 20px;
-            }
-
-            .concert__about-btn {
-                font-size: 12px;
-                padding: 3vw 12vw;
-            }
-
-            .concert__block {
-                margin-bottom: 20vw;
-            }
-
-            .concert__block:last-child {
-                margin-bottom: 100vw;
-            }
-
-            .concert__header {
-                font-size: 20px;
-            }
-
-            .concert__header-text {
-                max-width: 100%;
-                font-size: 12px;
-                line-height: 20px;
-            }
-        }
-
-        .latterCom__container {
-            padding-top: 8vw;
-            padding-bottom: 8vw;
-        }
-
-        .latterCom__header {
-            position: relative;
-            padding: 0.25vw 3.5vw;
-            font-weight: normal;
-            line-height: 35px;
-            text-align: center;
-            font-size: 50px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 2.75vw;
-            background-clip: text;
-            color: transparent;
-            color: #000000;
-        }
-
-        .latterCom__header-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 8vw;
-        }
-
-        .latterCom__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .latterCom__header-text {
-            max-width: 36.75vw;
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            text-align: center;
-        }
-
-        .latterCom__main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .latterCom__main-block {
-            width: 100%;
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        .latterCom__main-block:not(:last-child) {
-            margin-bottom: 2.75vw;
-        }
-
-        .latterCom__main-block:nth-child(2) {
-            flex-direction: row-reverse;
-        }
-
-        .latterCom__main-info {
-            width: 50%;
-            position: relative;
-            box-sizing: border-box;
-            background-color: #f5f6f6;
-            padding: 1.75vw 3.25vw 1.75vw 1.75vw;
-        }
-
-        .latterCom__main-info::after {
-            content: '';
-            position: absolute;
-            right: -40px;
-            transform: translateY(50%);
-            bottom: 50%;
-            border: 20px solid transparent;
-            border-left: 20px solid #f5f6f6;
-        }
-
-        .latterCom__main-info.right::after {
-            right: auto;
-            left: -40px;
-            border: 20px solid transparent;
-            border-right: 20px solid #f5f6f6;
-        }
-
-        .latterCom__main-video {
-            background-color: #000000;
-            width: 50%;
-        }
-
-        .latterCom__date-block {
-            width: 90%;
-            box-sizing: border-box;
-            margin-bottom: .75vw;
-        }
-
-        .latterCom__date-date {
-            opacity: .7;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-            margin-bottom: .5vw;
-        }
-
-        .latterCom__date-underline {
-            display: block;
-            height: 1px;
-            background-color: #000000;
-            margin-bottom: .5vw;
-        }
-
-        .latterCom__date-name {
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-        }
-
-        .latterCom__about-block {
-            width: 90%;
-        }
-
-        .latterCom__about-header {
-            font-size: 23px;
-            letter-spacing: 0;
-            line-height: 35px;
-            font-family: Open-Sans;
-            margin-bottom: 1.25vw;
-        }
-
-        .latterCom__about-text {
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            font-family: Open-Sans;
-            color: #acacac;
-            margin-bottom: 2vw;
-        }
-
-        .latterCom__about-btn {
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            font-size: 14px;
-            line-height: 24px;
-            color: #000000;
-            font-weight: 700;
-            font-family: Open-Sans;
-            padding: .5vw 1vw;
-            border: 1px solid #636363;
-            margin-right: .25vw;
-        }
-
-        .latterCom__about-btn-arrow {
-            height: .5vw;
-            width: 0.25vw;
-            position: relative;
-            margin-left: .5vw;
-        }
-
-        .latterCom__about-btn-arrow-top,
-        .latterCom__about-btn-arrow-bottom {
-            background: #000000;
-            height: 1px;
-            left: -0.125vw;
-            position: absolute;
-            top: .25vw;
-            width: 5px;
-        }
-
-        .latterCom__about-btn-arrow-top {
-            top: .25vw;
-            transform: rotate(45deg);
-            transform-origin: bottom right;
-        }
-
-        .latterCom__about-btn-arrow-bottom {
-            transform: rotate(-45deg);
-            transform-origin: top right;
-        }
-
-        .latterCom__about-stat {
-            width: auto;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .latterCom__stat {
-            display: flex;
-            align-items: center;
-            font-size: 12px;
-            color: #999999;
-            font-family: Myriad Pro;
-            margin-right: 0.5vw;
-        }
-
-        .latterCom__stat::before {
-            margin-right: .5vw;
-            content: '';
-            display: inline-block;
-        }
-
-        .latterCom__stat-block {
-            width: 100%;
-            flex-wrap: nowrap;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .latterCom__stat.auditions::before {
-            width: 13px;
-            height: 16px;
-            background-image: url(./img/SVG/audi.svg);
-        }
-
-        .latterCom__stat.likes::before {
-            width: 16px;
-            height: 14px;
-            background-image: url(./img/SVG/like.svg);
-        }
-
-        .latterCom__stat.shared::before {
-            width: 16px;
-            height: 14px;
-            background-image: url(./img/SVG/share.svg);
-        }
-
-        .latterCom__stat.comments::before {
-            width: 15px;
-            height: 15px;
-            background-image: url(./img/SVG/comment.svg);
-        }
-
-        @media (max-width: 1440px) {
-            .latterCom__header {
-                font-size: 35px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .latterCom__header-block {
-                margin-bottom: 10vw;
-            }
-
-            .latterCom__main-block {
-                flex-direction: column !important;
-            }
-
-            .latterCom__main-info,
-            .latterCom__main-info.right {
-                width: 100%;
-            }
-
-            .latterCom__main-info::after,
-            .latterCom__main-info.right::after {
-                content: '';
-                position: absolute;
-                left: auto;
-                bottom: -10%;
-                transform: translateX(50%);
-                right: 50%;
-                border: 20px solid transparent;
-                border-top: 20px solid #f5f6f6;
-            }
-
-            .latterCom__main-video {
-                height: 280px;
-                width: 100%;
-            }
-
-            .latterCom__date-block {
-                width: 100%;
-                text-align: center;
-            }
-
-            .latterCom__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .latterCom__about-btn {
-                justify-content: center;
-                width: 50%;
-                padding: 2vw 8vw;
-                margin-bottom: 0.5vw;
-            }
-
-            .latterCom__about-stat {
-                width: 50%;
-            }
-
-            .latterCom__stat-block {
-                align-items: center;
-                flex-direction: column;
-            }
-
-            .latterCom__block:last-child {
-                margin-bottom: 70vw;
-            }
-
-            .latterCom__header {
-                font-size: 30px;
-            }
-
-            .latterCom__header-text {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .latterCom__main-info::after {
-                display: none;
-            }
-
-            .latterCom__about-block {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 100%;
-            }
-
-            .latterCom__about-header {
-                font-size: 16px;
-                line-height: 25px;
-            }
-
-            .latterCom__about-text {
-                font-size: 12px;
-                line-height: 20px;
-            }
-
-            .latterCom__about-btn {
-                width: auto;
-                font-size: 12px;
-                padding: 3vw 12vw;
-            }
-
-            .latterCom__about-stat {
-                width: 100%;
-            }
-
-            .latterCom__block {
-                margin-bottom: 20vw;
-            }
-
-            .latterCom__block:last-child {
-                margin-bottom: 100vw;
-            }
-
-            .latterCom__header {
-                font-size: 20px;
-            }
-
-            .latterCom__header-text {
-                max-width: 100%;
-                font-size: 12px;
-                line-height: 20px;
-            }
-        }
-
-        .slider {
-            position: relative;
-            background-image: url(./img/JPG/sliderBG.jpg);
-            background-size: cover;
-        }
-
-        .slider__container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding-top: 8vw;
-            padding-bottom: 4.25vw;
-        }
-
-        .slider__icon {
-            width: 6.5vw;
-            height: 1.5vw;
-            background-image: url(./img/SVG/sliderIco.svg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin-bottom: 2.25vw;
-        }
-
-        .slider__header {
-            font-size: 18px;
-            letter-spacing: 2px;
-            line-height: 26px;
-            text-transform: uppercase;
-            color: #ffffff;
-            font-weight: 400;
-            margin-bottom: 2.25vw;
-        }
-
-        .slider__text {
-            width: 25.75vw;
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            color: #798285;
-            font-weight: 400;
-            font-family: Open-Sans;
-            margin-bottom: 3.75vw;
-        }
-
-        .slider__date {
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            color: #565e61;
-            font-weight: 400;
-            font-family: Open-Sans;
-            margin-bottom: 3.5vw;
-        }
-
-        .slider__paggination {
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        .slider__paggination-dot {
-            cursor: pointer;
-            width: 11px;
-            height: 11px;
-            border-radius: 6px;
-            background-color: #ffffff;
-            border: 1px solid #ffffff;
-        }
-
-        .slider__paggination-dot:nth-child(1) {
-            background-color: transparent;
-        }
-
-        .slider__paggination-dot:not(:last-child) {
-            margin-right: 1.75vw;
-        }
-
-        .slider__arrow {
-            cursor: pointer;
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 5vw solid transparent;
-            border-right: 5vw solid transparent;
-            border-bottom: 6vw solid #ffffff;
-            top: 50%;
-            transform: translateY(-50%) rotate(90deg);
-        }
-
-        .slider__arrow.right {
-            right: -2.1vw;
-            transform: translateY(-50%) rotate(-90deg);
-        }
-
-        .slider__arrow.left {
-            left: -2.1vw;
-        }
-
-        .slider__btn {
-            top: 3.5vw;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg);
-            position: absolute;
-            display: inline-block;
-            background-image: url(./img/png/arrow.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            width: .55vw;
-            height: 1.1vw;
-        }
-
-        @media (max-width: 1440px) {
-            .slider__text {
-                width: 36vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .slider__icon {
-                width: 9.75vw;
-                height: 2.25vw;
-            }
-
-            .slider__header {
-                font-size: 12px;
-                letter-spacing: 1px;
-                line-height: 17px;
-            }
-
-            .slider__text {
-                width: 36vw;
-                font-size: 9px;
-                letter-spacing: 0;
-                line-height: 16px;
-            }
-
-            .slider__date {
-                font-size: 9px;
-                line-height: 16px;
-            }
-
-            .slider__paggination-dot {
-                width: 7px;
-                height: 7px;
-                border-radius: 4px;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .slider__icon {
-                width: 13vw;
-                height: 3vw;
-            }
-
-            .slider__text {
-                width: 51.5vw;
-                font-size: 7px;
-                line-height: 12px;
-            }
-
-            .slider__date {
-                font-size: 7px;
-                line-height: 12px;
-            }
-
-            .slider__paggination {
-                display: flex;
-                flex-wrap: nowrap;
-            }
-
-            .slider__paggination-dot {
-                width: 5px;
-                height: 5px;
-                border-radius: 3px;
-            }
-
-            .slider__paggination-dot:not(:last-child) {
-                margin-right: 3.5vw;
-            }
-
-            .slider__arrow {
-                display: none;
-            }
-        }
-
-        .new__container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            padding-top: 8.25vw;
-            padding-bottom: 4.8vw;
-        }
-
-        .new__block {
-            box-sizing: border-box;
-            padding: 1.8vw;
-            width: 19.2vw;
-            height: 21.1vw;
-            margin-bottom: 1.3vw;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-
-        .new__block:nth-child(1) {
-            background-image: url(./img/JPG/newBlock1.jpg);
-        }
-
-        .new__block:nth-child(2) {
-            background-image: url(./img/JPG/newBlock2.jpg);
-        }
-
-        .new__block:nth-child(3) {
-            background-image: url(./img/JPG/newBlock3.jpg);
-        }
-
-        .new__block:nth-child(4) {
-            background-image: url(./img/JPG/newBlock4.jpg);
-        }
-
-        .new__block:nth-child(5) {
-            background-image: url(./img/JPG/newBlock5.jpg);
-        }
-
-        .new__block:nth-child(6) {
-            background-image: url(./img/JPG/newBlock6.jpg);
-        }
-
-        .new__date {
-            margin-bottom: 2.4vw;
-        }
-
-        .new__date-date {
-            opacity: 0.6;
-            font-size: 14px;
-            line-height: 24px;
-            text-transform: uppercase;
-            color: #000000;
-            font-weight: 700;
-            font-family: Open-Sans;
-            margin-bottom: .6vw;
-        }
-
-        .new__date-underline {
-            display: block;
-            height: 1px;
-            background-color: #000000;
-            margin-bottom: .5vw;
-        }
-
-        .new__date-name {
-            font-size: 14px;
-            line-height: 24px;
-            text-transform: uppercase;
-            color: #ffffff;
-            font-weight: 700;
-            font-family: Open-Sans;
-        }
-
-        .new__about-header {
-            height: 17px;
-            font-size: 23px;
-            letter-spacing: 0;
-            line-height: 24px;
-            color: #000000;
-            font-weight: 400;
-            font-family: Open-Sans;
-            margin-bottom: 3.2vw;
-        }
-
-        .new__about-text {
-            font-size: .7vw;
-            letter-spacing: 0;
-            line-height: 1.2vw;
-            color: #798285;
-            font-weight: 400;
-            font-family: Open-Sans;
-        }
-
-        @media (max-width: 1440px) {
-            .new__block {
-                padding: 2.5vw;
-                width: 26.6vw;
-                height: 29.3vw;
-                margin-bottom: 1.6vw;
-            }
-
-            .new__date {
-                margin-bottom: 3.2vw;
-            }
-
-            .new__date-date {
-                font-size: 1vw;
-                line-height: 1.6vw;
-                margin-bottom: .8vw;
-            }
-
-            .new__date-underline {
-                margin-bottom: .7vw;
-            }
-
-            .new__date-name {
-                font-size: 1vw;
-                line-height: 1.6vw;
-            }
-
-            .new__about-header {
-                height: 1.2vw;
-                font-size: 1.6vw;
-                line-height: 1.7vw;
-                margin-bottom: 4.4vw;
-            }
-
-            .new__about-text {
-                font-size: 1vw;
-                line-height: 1.6vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .new__block {
-                width: 39vw;
-                height: 45.6vw;
-            }
-
-            .new__date-date {
-                font-size: 1.8vw;
-                line-height: 3.1vw;
-                margin-bottom: .6vw;
-            }
-
-            .new__date-underline {
-                margin-bottom: .5vw;
-            }
-
-            .new__date-name {
-                font-size: 1.8vw;
-                line-height: 3.1vw;
-            }
-
-            .new__about-header {
-                height: 2vw;
-                font-size: 3.1vw;
-                line-height: 3.1vw;
-                margin-bottom: 6.4vw;
-            }
-
-            .new__about-text {
-                font-size: 1.8vw;
-                line-height: 3.1vw;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .new__block {
-                width: 100%;
-                height: 100vw;
-                margin-bottom: 6.9vw;
-            }
-
-            .new__date-date {
-                font-size: 3.7vw;
-                line-height: 6.4vw;
-                margin-bottom: .6vw;
-            }
-
-            .new__date-underline {
-                margin-bottom: .5vw;
-            }
-
-            .new__date-name {
-                font-size: 3.7vw;
-                line-height: 6.4vw;
-            }
-
-            .new__about-header {
-                height: 2.1vw;
-                font-size: 6.4vw;
-                line-height: 6.4vw;
-                margin-bottom: 17vw;
-            }
-
-            .new__about-text {
-                font-size: 3.7vw;
-                line-height: 6.4vw;
-            }
-        }
-
-        .upcoming {
-            background-image: url(./img/JPG/upcomingBG.jpg);
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center bottom;
-        }
-
-        .upcoming__container {
-            padding-top: 10.75vw;
-            padding-left: 50vw;
-            padding-bottom: 9.5vw;
-        }
-
-        .upcoming__header {
-            display: inline-block;
-            position: relative;
-            font-size: 50px;
-            letter-spacing: 6px;
-            line-height: 59px;
-            text-transform: uppercase;
-            color: #42717e;
-            padding-left: .2vw;
-            padding-right: 2vw;
-            margin-bottom: 5.75vw;
-        }
-
-        .upcoming__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .upcoming__about-header {
-            font-size: 23px;
-            letter-spacing: 0;
-            line-height: 24px;
-            font-family: Open-Sans;
-            margin-bottom: .5vw;
-        }
-
-        .upcoming__about-underline {
-            height: 1px;
-            width: 6.75vw;
-            background-color: #000000;
-            margin-bottom: .75vw;
-        }
-
-        .upcoming__about-text {
-            max-width: 27.25vw;
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            margin-bottom: 1vw;
-        }
-
-        .upcoming__about-line {
-            margin-left: 1.75vw;
-            width: 1px;
-            height: 2.5vw;
-            background-color: #000000;
-            margin-bottom: .5vw;
-        }
-
-        .upcoming__about-line.huge {
-            height: 8.25vw;
-        }
-
-        .upcoming__about-date {
-            opacity: .6;
-            font-size: 14px;
-            line-height: 24px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-        }
-
-        .upcoming__about-date:not(:last-child) {
-            margin-bottom: .5vw;
-        }
-
-        @media (max-width: 1440px) {
-            .upcoming__about-text {
-                max-width: 37.8vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .upcoming__header {
-                font-size: 25px;
-                letter-spacing: 3px;
-                line-height: 25px;
-            }
-
-            .upcoming__about-header {
-                font-size: 12px;
-                line-height: 12px;
-            }
-
-            .upcoming__about-text {
-                max-width: 27.25vw;
-                font-size: 7px;
-                line-height: 12px;
-            }
-
-            .upcoming__about-date {
-                font-size: 7px;
-                line-height: 12px;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .upcoming__container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding-left: 4vw;
-            }
-
-            .upcoming__about {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .upcoming__about-text {
-                max-width: 100%;
-            }
-
-            .upcoming__about-underline {
-                width: 125px;
-            }
-        }
-
-        .history {
-            background-image: url(./img/JPG/historyBG.jpg);
-            background-repeat: no-repeat;
-            background-position: bottom center;
-            background-size: contain;
-        }
-
-        .history__container {
-            padding: 8vw 1.5vw 30.75vw 1.5vw;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .history__header {
-            position: relative;
-            padding: 0.25vw 3.5vw;
-            font-weight: normal;
-            line-height: 35px;
-            text-align: center;
-            font-size: 50px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            background-clip: text;
-            color: transparent;
-            color: #000000;
-            margin-bottom: 2.75vw;
-        }
-
-        .history__header-block {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 10vw;
-        }
-
-        .history__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .history__header-text {
-            max-width: 36.75vw;
-            font-size: 14px;
-            letter-spacing: 2px;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            text-align: center;
-        }
-
-        .history__main {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2vw;
-        }
-
-        .history__main-line {
-            opacity: .3;
-            height: 1px;
-            width: 7.25vw;
-            background-color: #000000;
-        }
-
-        .history__main-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 4px;
-            background-color: #595c59;
-        }
-
-        .history__main-date {
-            opacity: .3;
-            font-size: 35px;
-            letter-spacing: 4px;
-            line-height: 59px;
-            text-transform: uppercase;
-            color: #000000;
-        }
-
-        .history__main-date.base {
-            display: flex;
-            align-items: center;
-            opacity: 1;
-            color: #575a59;
-        }
-
-        .history__main-text {
-            max-width: 11.5vw;
-            font-size: 14px;
-            line-height: 19px;
-            color: #5a5a58;
-            font-family: Open-Sans;
-            text-align: center;
-        }
-
-        @media (max-width: 1440px) {
-            .history__main-date {
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .history__header {
-                font-size: 25px;
-                letter-spacing: 3px;
-            }
-
-            .history__header-text {
-                font-size: 7px;
-                letter-spacing: 1px;
-                line-height: 14px;
-            }
-
-            .history__main-date {
-                font-size: 10px;
-                letter-spacing: 2px;
-            }
-
-            .history__main-dot {
-                width: 4px;
-                height: 4px;
-                border-radius: 2px;
-            }
-
-            .history__main-text {
-                font-size: 7px;
-                line-height: 9px;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .history__header {
-                font-size: 12px;
-                letter-spacing: 1px;
-            }
-
-            .history__header-text {
-                font-size: 4px;
-                letter-spacing: 1px;
-                line-height: 8px;
-            }
-
-            .history__main-date {
-                font-size: 6px;
-                letter-spacing: 1px;
-            }
-
-            .history__main-dot {
-                width: 2px;
-                height: 2px;
-                border-radius: 1px;
-            }
-
-            .history__main-text {
-                font-size: 4px;
-                line-height: 6px;
-            }
-        }
-
-        .contact {
-            background-image: url(./img/JPG/contactBG.jpg);
-            background-repeat: no-repeat;
-            background-position: bottom center;
-        }
-
-        .contact__container {
-            padding-top: 13.5vw;
-            padding-bottom: 23.75vw;
-            padding-left: 50vw;
-        }
-
-        .contact__header {
-            position: relative;
-            padding: 0.25vw 3.5vw;
-            font-weight: normal;
-            line-height: 35px;
-            text-align: center;
-            font-size: 50px;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 2.75vw;
-            background-clip: text;
-            color: transparent;
-            color: #000000;
-            padding: 0;
-            width: 100%;
-            text-align-last: left;
-            margin-bottom: 2vw;
-        }
-
-        .contact__header-line {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, 0);
-            width: 100%;
-            height: 1px;
-            background-color: #000000;
-            display: inline-block;
-        }
-
-        .contact__header-text {
-            font-size: 14px;
-            letter-spacing: 0;
-            line-height: 24px;
-            color: #798285;
-            font-family: Open-Sans;
-            margin-bottom: 4.5vw;
-        }
-
-        .contact__form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .contact__form-block {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .contact__form-input {
-            width: 19.25vw;
-            padding: 10px 0;
-            background: transparent;
-            border-bottom: 1px solid #000000;
-            margin-bottom: 2.5vw;
-        }
-
-        .contact__form-input:nth-child(3) {
-            margin-bottom: 1.5vw;
-        }
-
-        .contact__form-btn {
-            font-size: 20px;
-            line-height: 24px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: Open-Sans;
-            text-align: left;
-        }
-
-        .contact__links {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border-left: 1px solid #000000;
-            box-sizing: border-box;
-            padding-left: 1.25vw;
-        }
-
-        .contact__links-link {
-            display: inline-block;
-            width: 19px;
-            height: 16px;
-            background-repeat: no-repeat;
-            background-position: center center;
-        }
-
-        .contact__links-link.facebook {
-            background-image: url(./img/SVG/facebook.svg);
-        }
-
-        .contact__links-link.inst {
-            background-image: url(./img/SVG/inst.svg);
-        }
-
-        .contact__links-link.twitter {
-            background-image: url(./img/SVG/twitter.svg);
-        }
-
-        @media (max-width: 1440px) {
-            .contact__form-input {
-                width: 26.73vw;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .contact__container {
-                padding-left: 9vw;
-            }
-
-            .contact__header {
-                font-size: 25px;
-            }
-
-            .contact__form-input {
-                width: 50.13vw;
-            }
-        }
-
-        @media (max-width: 375px) {
-            .contact {
-                background-size: contain;
-            }
-
-            .contact__header-text {
-                font-size: 8px;
-                line-height: 12px;
-            }
-
-            .contact__form-btn {
-                font-size: 10px;
-                line-height: 12px;
-            }
-        }
-    </style><noscript>
-        <style amp-boilerplate>
-            body {
-                -webkit-animation: none;
-                -moz-animation: none;
-                -ms-animation: none;
-                animation: none
-            }
-        </style>
-    </noscript>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
 </head>
 
 <body>
@@ -1961,114 +13,120 @@
         <div class="container header__container">
             <nav class="nav">
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#" class="nav__link"> ABOUT<span class="nav__underline"></span></a>
+                    <li class="nav__item"><a href="#" class="nav__link">ABOUT<span class="nav__underline"></span></a>
                     </li>
-                    <li class="nav__item"><a href="#discography" class="nav__link"> DISCOGRAPHY<span
+                    <li class="nav__item"><a href="#discography" class="nav__link">DISCOGRAPHY<span
                                 class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#concert" class="nav__link"> CONCERT TOURS<span
+                    <li class="nav__item"><a href="#concert" class="nav__link">CONCERT TOURS<span
                                 class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#latterCom" class="nav__link"> LATTER COMPOSITIONS<span
+                    <li class="nav__item"><a href="#latterCom" class="nav__link">LATTER COMPOSITIONS<span
                                 class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#new" class="nav__link"> NEW TRACKS<span
+                    <li class="nav__item"><a href="#new" class="nav__link">NEW TRACKS<span
                                 class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#upcoming" class="nav__link"> UPCOMING EVENTS<span
+                    <li class="nav__item"><a href="#upcoming" class="nav__link">UPCOMING EVENTS<span
                                 class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#history" class="nav__link"> HISTORY<span
-                                class="nav__underline"></span></a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link"> CONTACT<span
-                                class="nav__underline"></span></a></li>
+                    <li class="nav__item"><a href="#history" class="nav__link">HISTORY<span class="nav__underline"></span></a>
+                    </li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">CONTACT<span class="nav__underline"></span></a>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <main class="main">
         <section id="discography" class="discography">
             <div class="discography__container container">
                 <div class="discography__header-block">
-                    <h2 class="discography__header"> discography <span class="discography__header-line"></span></h2>
-                    <p class="discography__header-text"> September 4 world heard Night Visions, the first full album. He
+                    <h2 class="discography__header">discography <span class="discography__header-line"></span></h2>
+                    <p class="discography__header-text">September 4 world heard Night Visions, the first full album. He
                         reached the 2 position in the chart Billboard 200. The single «It's Time» took 22 th place in
                         the Billboard Hot 100, 4th in the Billboard Alternative and Billboard Rock, and now went
                         platinum.</p>
                 </div>
                 <div class="discography__block">
                     <div class="discography__date-block">
-                        <p class="discography__date-block-date"> 2010</p><span
-                            class="discography__date-block-underline"></span>
-                        <h3 class="discography__date-block-name"> Hell and Silence</h3>
+                        <p class="discography__date-block-date">2010</p>
+                        <span class="discography__date-block-underline"></span>
+                        <h3 class="discography__date-block-name">Hell and Silence</h3>
                     </div>
                     <div class="discography__about-block">
-                        <h4 class="discography__about-block-header"> Hell and Silence is an EP by Las Vegas rock group
+                        <h4 class="discography__about-block-header">Hell and Silence is an EP by Las Vegas rock group
                         </h4>
-                        <p class="discography__about-block-text"> Hell and Silence is an EP by Las Vegas rock group ,
+                        <p class="discography__about-block-text">Hell and Silence is an EP by Las Vegas rock group ,
                             released in March 2010 in the United States. It was recorded at Battle Born Studios. All
                             songs were written by Imagine Dragons and self-produced. The EP was in part mixed by Grammy
-                            nominated engineer Mark Needham.<br> To promote the album the band performed five shows at
-                            SXSW 2010 including at the BMI Official Showcase.While at SXSW they were endorsed by Blue
-                            Microphones. They also toured the western United States with Nico Vega and Saint Motel. They
-                            also performed at Bite of Las Vegas Festival 2010, New Noise Music Festival, Neon Reverb
-                            Festival, and Fork Fest.</p> <button class="discography__about-block-btn btn1">PLAY</button>
+                            nominated engineer Mark Needham.<br>
+                            To promote the album the band performed five shows at SXSW 2010 including at the BMI
+                            Official Showcase.While at SXSW they were endorsed by Blue Microphones. They also toured the
+                            western United States with Nico Vega and Saint Motel. They also performed at Bite of Las
+                            Vegas Festival 2010, New Noise Music Festival, Neon Reverb Festival, and Fork Fest.</p>
+                        <button class="discography__about-block-btn btn1">PLAY</button>
                     </div>
                 </div>
                 <div class="discography__block">
                     <div class="discography__date-block">
-                        <p class="discography__date-block-date"> 2012</p><span
-                            class="discography__date-block-underline"></span>
-                        <h3 class="discography__date-block-name"> Night Visions</h3>
+                        <p class="discography__date-block-date">2012</p>
+                        <span class="discography__date-block-underline"></span>
+                        <h3 class="discography__date-block-name">Night Visions</h3>
                     </div>
                     <div class="discography__about-block">
-                        <h4 class="discography__about-block-header"> Night Visions is the debut studio album by American
+                        <h4 class="discography__about-block-header">Night Visions is the debut studio album by American
                             rock band</h4>
-                        <p class="discography__about-block-text"> It was released on September 4, 2012 through
-                            Interscope Records. The extended track was released on February 12, 2013, adding three more
-                            songs. Recorded between 2010 and 2012, the album was primarily produced by the band
-                            themselves, as well as English hip-hop producer Alex da Kid and Brandon Darner from the
-                            American indie rock group The Envy Corps. It was mastered by Joe LaPorta. According to
-                            frontman Dan Reynolds, the album took three years to finish ...</p> <button
-                            class="discography__about-block-btn btn2">PLAY</button>
+                        <p class="discography__about-block-text">It was released on September 4, 2012 through Interscope
+                            Records. The extended track was released on February 12, 2013, adding three more songs.
+                            Recorded between 2010 and 2012, the album was primarily produced by the band themselves, as
+                            well as English hip-hop producer Alex da Kid and Brandon Darner from the American indie rock
+                            group The Envy Corps. It was mastered by Joe LaPorta. According to frontman Dan Reynolds,
+                            the album took three years to finish ...</p>
+                        <button class="discography__about-block-btn btn2">PLAY</button>
                     </div>
                 </div>
                 <div class="discography__block">
                     <div class="discography__date-block">
-                        <p class="discography__date-block-date"> 2015</p><span
-                            class="discography__date-block-underline"></span>
-                        <h3 class="discography__date-block-name"> Smoke + Mirrors</h3>
+                        <p class="discography__date-block-date">2015</p>
+                        <span class="discography__date-block-underline"></span>
+                        <h3 class="discography__date-block-name">Smoke + Mirrors</h3>
                     </div>
                     <div class="discography__about-block">
-                        <h4 class="discography__about-block-header"> The album was recorded during 2014<br> at the
-                            band's home studio in Las Vegas, Nevada</h4>
-                        <p class="discography__about-block-text"> Self-produced by members of the band along with
-                            English hip-hop producer Alexander Grant, known by his moniker Alex da Kid, the album was
-                            released by Interscope Records and Grant's KIDinaKORNER label on February 17, 2015, in the
-                            United States.</p> <button class="discography__about-block-btn btn3">PLAY</button>
+                        <h4 class="discography__about-block-header">The album was recorded during 2014<br>
+                            at the band's home studio in Las Vegas, Nevada</h4>
+                        <p class="discography__about-block-text">Self-produced by members of the band along with English
+                            hip-hop producer Alexander Grant, known by his moniker Alex da Kid, the album was released
+                            by Interscope Records and Grant's KIDinaKORNER label on February 17, 2015, in the United
+                            States.</p>
+                        <button class="discography__about-block-btn btn3">PLAY</button>
                     </div>
                 </div>
             </div>
         </section>
+
         <section class="concert" id="concert">
             <div class="container concert__container">
                 <div class="concert__header-block">
-                    <h2 class="concert__header"> concert tours<span class="concert__header-line"></span></h2>
-                    <p class="concert__header-text"> Before the release of Night Visions, Imagine Dragons made
+                    <h2 class="concert__header">concert tours<span class="concert__header-line"></span></h2>
+                    <p class="concert__header-text">Before the release of Night Visions, Imagine Dragons made
                         appearances on American radio and television to promote their extended play, Continued Silence
-                        and debut single It's Time. The band performed"It's Time" on the July 16, 2012 airing of NBC
+                        and debut single It's Time. The band performed "It's Time" on the July 16, 2012 airing of NBC
                         late-night talk show The Tonight Show with Jay Leno"</p>
                 </div>
                 <div class="concert__main-block">
                     <div class="concert__date-block">
-                        <p class="concert__date-date"> 03.08.2015</p><span class="concert__date-underline"></span>
-                        <h3 class="concert__date-name"> Smoke + Mirrors Tour</h3>
+                        <p class="concert__date-date">03.08.2015</p>
+                        <span class="concert__date-underline"></span>
+                        <h3 class="concert__date-name">Smoke + Mirrors Tour</h3>
                     </div>
                     <div class="concert__about-block">
-                        <h4 class="concert__about-header"> 2015–present</h4>
-                        <p class="concert__about-text"> At Lollapalooza in Sao Paulo, Brazil, the last date on the Into
-                            the Night Tour, the band announced a rest, and complemented saying,"This is our last show
-                            for a while, and had no better place to end this tour". The conclusion of the Into the Night
-                            Tour signaled the end of the Night Visions album cycle. Lead singer Dan Reynolds joked about
-                            the end of the Night Visions cycle, saying that"We're always writing on the road, that
-                            second album will come, unless we die.<br> next year. Hopefully we don't die and there will
-                            be a second album. I don't know when it will be, but it may come"</p> <button
-                            class="concert__about-btn">Buy online
+                        <h4 class="concert__about-header">2015–present</h4>
+                        <p class="concert__about-text">At Lollapalooza in Sao Paulo, Brazil, the last date on the Into
+                            the Night Tour, the band announced a rest, and complemented saying, "This is our last show
+                            for a while, and had no better place to end this tour".[51] The conclusion of the Into the
+                            Night Tour signaled the end of the Night Visions album cycle. Lead singer Dan Reynolds joked
+                            about the end of the Night Visions cycle, saying that "We're always writing on the road,
+                            [so] that second album will come, unless we die.<br>
+                            next year. Hopefully we don't die and there will be a second album. I don't know when it
+                            will be, but it may come"</p>
+                        <button class="concert__about-btn">Buy online
                             <span class="concert__about-btn-arrow">
                                 <span class="concert__about-btn-arrow-top"></span>
                                 <span class="concert__about-btn-arrow-bottom"></span>
@@ -2078,241 +136,281 @@
                 </div>
             </div>
         </section>
+
         <section class="latterCom" id="latterCom">
             <div class="container latterCom__container">
                 <div class="latterCom__header-block">
-                    <h2 class="latterCom__header"> latter compositions<span class="latterCom__header-line"></span></h2>
-                    <p class="latterCom__header-text"> "It's Time" was released as the lead single from Continued
-                        Silence and It's Time, both extended plays preceding Night Visions' release.</p>
+                    <h2 class="latterCom__header">latter compositions<span class="latterCom__header-line"></span></h2>
+                    <p class="latterCom__header-text">"It's Time" was released as the lead single from Continued Silence
+                        and It's Time, both extended plays preceding Night Visions' release.</p>
                 </div>
                 <div class="latterCom__main">
                     <div class="latterCom__main-block">
                         <div class="latterCom__main-info">
                             <div class="latterCom__date-block">
-                                <p class="latterCom__date-date"> 03.04.2015</p><span
-                                    class="latterCom__date-underline"></span>
-                                <h3 class="latterCom__date-name"> indian sammer</h3>
+                                <p class="latterCom__date-date">03.04.2015</p>
+                                <span class="latterCom__date-underline"></span>
+                                <h3 class="latterCom__date-name">indian sammer</h3>
                             </div>
                             <div class="latterCom__about-block">
-                                <h4 class="latterCom__about-header"> Sam Feldt ft. Kimberly Anne - Show Me Love (EDX's
+                                <h4 class="latterCom__about-header">Sam Feldt ft. Kimberly Anne - Show Me Love (EDX's
                                     Indian Summer Remix)</h4>
-                                <p class="latterCom__about-text"> "Radioactive" is a song recorded by American rock band
+                                <p class="latterCom__about-text">"Radioactive" is a song recorded by American rock band
                                     Imagine Dragons for their major-label debut EP Continued Silence and later on their
-                                    debut studio album, Night Visions (2012), as the opening track."Radioactive" was
+                                    debut studio album, Night Visions (2012), as the opening track. "Radioactive" was
                                 </p>
-                                <div class="latterCom__stat-block"> <button class="latterCom__about-btn">Visit the iTunes
-                                    <span class="latterCom__about-btn-arrow">
-                                        <span class="latterCom__about-btn-arrow-top"></span>
-                                        <span class="latterCom__about-btn-arrow-bottom"></span>
+                                <div class="latterCom__stat-block">
+                                    <button class="latterCom__about-btn">Visit the iTunes
+                                        <span class="latterCom__about-btn-arrow">
+                                            <span class="latterCom__about-btn-arrow-top"></span>
+                                            <span class="latterCom__about-btn-arrow-bottom"></span>
+                                        </span>
+                                    </button>
+                                    <span class="latterCom__about-stat">
+                                        <span class="latterCom__stat auditions">182,364</span>
+                                        <span class="latterCom__stat likes">10k</span>
+                                        <span class="latterCom__stat shared">3k</span>
+                                        <span class="latterCom__stat comments">96</span>
                                     </span>
-                                </button><span
-                                        class="latterCom__about-stat"><span class="latterCom__stat auditions">
-                                            182,364</span><span class="latterCom__stat likes"> 10k</span><span
-                                            class="latterCom__stat shared"> 3k</span><span
-                                            class="latterCom__stat comments"> 96</span></span></div>
+                                </div>
                             </div>
-                        </div><amp-video layout="responsive" controls
-                            poster="./img/JPG/videoPoster1.jpg" src="./video/video1.mp4"
-                            class="latterCom__main-video"></amp-video>
+                        </div>
+                        <video controls poster="./img/JPG/videoPoster1.jpg" src="./video/video1.mp4"
+                            class="latterCom__main-video"></video>
                     </div>
                     <div class="latterCom__main-block">
                         <div class="latterCom__main-info right">
                             <div class="latterCom__date-block">
-                                <p class="latterCom__date-date"> 20.07.2015</p><span
-                                    class="latterCom__date-underline"></span>
-                                <h3 class="latterCom__date-name"> indian sammer Remix</h3>
+                                <p class="latterCom__date-date">20.07.2015</p>
+                                <span class="latterCom__date-underline"></span>
+                                <h3 class="latterCom__date-name">indian sammer Remix</h3>
                             </div>
                             <div class="latterCom__about-block">
-                                <h4 class="latterCom__about-header"> Sam Feldt - Show Me Love (EDX's Indian Summer
-                                    Remix) </h4>
-                                <p class="latterCom__about-text"> Amsterdam's Sam Feldt earned attention in Europe and
+                                <h4 class="latterCom__about-header">Sam Feldt - Show Me Love (EDX's Indian Summer Remix)
+                                </h4>
+                                <p class="latterCom__about-text">Amsterdam's Sam Feldt earned attention in Europe and
                                     then worldwide for his melodic house remixes, mixtapes, and collaborations including
-                                    2014#ap39#s"Bloesem" with De Hofnar and"Hot Skin" with Kav Verhouzer on...</p>
-                                <div class="latterCom__stat-block"> <button class="latterCom__about-btn">Visit the iTunes
-                                    <span class="latterCom__about-btn-arrow">
-                                        <span class="latterCom__about-btn-arrow-top"></span>
-                                        <span class="latterCom__about-btn-arrow-bottom"></span>
+                                    2014's "Bloesem" with De Hofnar and "Hot Skin" with Kav Verhouzer on...</p>
+                                <div class="latterCom__stat-block">
+                                    <button class="latterCom__about-btn">Visit the iTunes
+                                        <span class="latterCom__about-btn-arrow">
+                                            <span class="latterCom__about-btn-arrow-top"></span>
+                                            <span class="latterCom__about-btn-arrow-bottom"></span>
+                                        </span>
+                                    </button>
+                                    <span class="latterCom__about-stat">
+                                        <span class="latterCom__stat auditions">12,289</span>
+                                        <span class="latterCom__stat likes">8k</span>
+                                        <span class="latterCom__stat shared">1k</span>
+                                        <span class="latterCom__stat comments">23</span>
                                     </span>
-                                </button><span
-                                        class="latterCom__about-stat"><span class="latterCom__stat auditions">
-                                            12,289</span><span class="latterCom__stat likes"> 8k</span><span
-                                            class="latterCom__stat shared"> 1k</span><span
-                                            class="latterCom__stat comments"> 23</span></span></div>
+                                </div>
                             </div>
-                        </div><amp-video layout="responsive" controls
-                            poster="./img/JPG/videoPoster2.jpg" src="./video/video2.mp4"
-                            class="latterCom__main-video"></amp-video>
+                        </div>
+                        <video controls poster="./img/JPG/videoPoster2.jpg" src="./video/video2.mp4"
+                            class="latterCom__main-video"></video>
                     </div>
                     <div class="latterCom__main-block">
                         <div class="latterCom__main-info">
                             <div class="latterCom__date-block">
-                                <p class="latterCom__date-date"> 03.04.2015</p><span
-                                    class="latterCom__date-underline"></span>
-                                <h3 class="latterCom__date-name"> chill nation</h3>
+                                <p class="latterCom__date-date">03.04.2015</p>
+                                <span class="latterCom__date-underline"></span>
+                                <h3 class="latterCom__date-name">chill nation</h3>
                             </div>
                             <div class="latterCom__about-block">
-                                <h4 class="latterCom__about-header"> James Bay - Let It Go (Bearson Remix)</h4>
-                                <p class="latterCom__about-text"> A soulful singer/songwriter from a small English town
+                                <h4 class="latterCom__about-header">James Bay - Let It Go (Bearson Remix)</h4>
+                                <p class="latterCom__about-text">A soulful singer/songwriter from a small English town
                                     with a penchant for crafting moving and evocative folk-pop confections in the vein
                                     of Ed Sheeran, Foy Vance, and Ben Howard, James Bay hails from the North</p>
-                                <div class="latterCom__stat-block"> <button class="latterCom__about-btn">Visit the iTunes
-                                    <span class="latterCom__about-btn-arrow">
-                                        <span class="latterCom__about-btn-arrow-top"></span>
-                                        <span class="latterCom__about-btn-arrow-bottom"></span>
+                                <div class="latterCom__stat-block">
+                                    <button class="latterCom__about-btn">Visit the iTunes
+                                        <span class="latterCom__about-btn-arrow">
+                                            <span class="latterCom__about-btn-arrow-top"></span>
+                                            <span class="latterCom__about-btn-arrow-bottom"></span>
+                                        </span>
+                                    </button>
+                                    <span class="latterCom__about-stat">
+                                        <span class="latterCom__stat auditions">182,364</span>
+                                        <span class="latterCom__stat likes">10k</span>
+                                        <span class="latterCom__stat shared">3k</span>
+                                        <span class="latterCom__stat comments">96</span>
                                     </span>
-                                </button><span
-                                        class="latterCom__about-stat"><span class="latterCom__stat auditions">
-                                            182,364</span><span class="latterCom__stat likes"> 10k</span><span
-                                            class="latterCom__stat shared"> 3k</span><span
-                                            class="latterCom__stat comments"> 96</span></span></div>
+                                </div>
                             </div>
-                        </div><amp-video layout="responsive" controls
-                            poster="./img/JPG/videoPoster3.jpg" src="./video/video3.mp4"
-                            class="latterCom__main-video"></amp-video>
+                        </div>
+                        <video controls poster="./img/JPG/videoPoster3.jpg" src="./video/video3.mp4"
+                            class="latterCom__main-video"></video>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="slider" class="slider">
             <div class="container slider__container">
                 <div class="slider__icon"></div>
-                <h3 class="slider__header"> In 2008, lead singer Dan Reynolds met<br> drummer Andrew Tolman at Brigham
-                    Young University where they were both students</h3>
-                <p class="slider__text"> Tolman recruited longtime high school friend Daniel Wayne"Wing" Sermon, who had
+                <h3 class="slider__header">In 2008, lead singer Dan Reynolds met<br>
+                    drummer Andrew Tolman at Brigham Young University where they were both students</h3>
+                <p class="slider__text">Tolman recruited longtime high school friend Daniel Wayne "Wing" Sermon, who had
                     graduated from Berklee College of Music. Tolman later recruited his wife, Brittany Tolman, to sing
                     backup and play keys.</p>
-                <p class="slider__date"> - Early years (2008–10)</p>
-                <div class="slider__paggination"><span class="slider__paggination-dot"></span><span
-                        class="slider__paggination-dot"></span><span class="slider__paggination-dot"></span></div>
+                <p class="slider__date">- Early years (2008–10)</p>
+                <div class="slider__paggination">
+                    <span class="slider__paggination-dot"></span>
+                    <span class="slider__paggination-dot"></span>
+                    <span class="slider__paggination-dot"></span>
+                </div>
             </div>
-            <div class="slider__arrow right"><span class="slider__btn right"></span></div>
-            <div class="slider__arrow left"><span class="slider__btn right"></span></div>
+            <div class="slider__arrow right">
+                <span class="slider__btn right">
+                </span>
+            </div>
+            <div class="slider__arrow left">
+                <span class="slider__btn right">
+                </span>
+            </div>
         </section>
+
         <section id="new" class="new">
             <div class="container new__container">
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 03.04.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">03.04.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> James Bay - Let It Go (Bearson Remix)</h2>
-                        <p class="new__about-text"> A soulful singer/songwriter from a small English town with a
-                            penchant for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran,
-                            Foy Vance, and Ben Howard</p>
+                        <h2 class="new__about-header">James Bay - Let It Go (Bearson Remix)</h2>
+                        <p class="new__about-text">A soulful singer/songwriter from a small English town with a penchant
+                            for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran, Foy Vance,
+                            and Ben Howard</p>
                     </div>
                 </div>
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 01.03.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">01.03.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> Smoke and Mirrors</h2>
-                        <p class="new__about-text"> Hard Rock Cafe teamed with the band, granting them the first ever
+                        <h2 class="new__about-header">Smoke and Mirrors</h2>
+                        <p class="new__about-text">Hard Rock Cafe teamed with the band, granting them the first ever
                             full access to take control of Hard Rock Cafe's internal video system</p>
                     </div>
                 </div>
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 04.04.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">04.04.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> It Comes Back to You</h2>
-                        <p class="new__about-text"> In 2015 a world tour, entitled the Smoke and Mirrors Tour is
+                        <h2 class="new__about-header">It Comes Back to You</h2>
+                        <p class="new__about-text">In 2015 a world tour, entitled the Smoke and Mirrors Tour is
                             scheduled in promotion of the world-wide release of Smoke and Mirrors.</p>
                     </div>
                 </div>
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 01.07.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">01.07.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> Let It Go (Bearson Remix)</h2>
-                        <p class="new__about-text"> A soulful singer/songwriter from a small English town with a
-                            penchant for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran,
-                            Foy Vance, and Ben </p>
+                        <h2 class="new__about-header">Let It Go (Bearson Remix)</h2>
+                        <p class="new__about-text">A soulful singer/songwriter from a small English town with a penchant
+                            for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran, Foy Vance,
+                            and Ben </p>
                     </div>
                 </div>
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 02.11.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">02.11.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> I Don't Mind</h2>
-                        <p class="new__about-text"> Hell and Silence is an EP by Las Vegas rock group Imagine Dragons,
-                            released in March 2010 in the United States. It was recorded at Battle Born Studios. All
+                        <h2 class="new__about-header">I Don't Mind</h2>
+                        <p class="new__about-text">Hell and Silence is an EP by Las Vegas rock group Imagine Dragons,
+                            released in March 2010 in the United States. It was recorded at Battle Born Studios.[1] All
                             songs were written by Imagine Dragons and self-produced.</p>
                     </div>
                 </div>
                 <div class="new__block">
                     <div class="new__date">
-                        <p class="new__date-date"> 06.09.2015</p><span class="new__date-underline"></span>
-                        <h3 class="new__date-name"> chill nation</h3>
+                        <p class="new__date-date">06.09.2015</p>
+                        <span class="new__date-underline"></span>
+                        <h3 class="new__date-name">chill nation</h3>
                     </div>
                     <div class="new__about">
-                        <h2 class="new__about-header"> Smoke + Mirrors</h2>
-                        <p class="new__about-text"> A soulful singer/songwriter from a small English town with a
-                            penchant for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran,
-                            Foy Vance, and Ben Howard</p>
+                        <h2 class="new__about-header">Smoke + Mirrors</h2>
+                        <p class="new__about-text">A soulful singer/songwriter from a small English town with a penchant
+                            for crafting moving and evocative folk-pop confections in the vein of Ed Sheeran, Foy Vance,
+                            and Ben Howard</p>
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="upcoming" class="upcoming">
             <div class="container upcoming__container">
-                <h2 class="upcoming__header"> Upcoming Events<span class="upcoming__header-line"></span></h2>
+                <h2 class="upcoming__header">Upcoming Events<span class="upcoming__header-line"></span></h2>
                 <div class="upcoming__about">
-                    <h2 class="upcoming__about-header"> Smoke + Mirrors Tour</h2>
+                    <h2 class="upcoming__about-header">Smoke + Mirrors Tour</h2>
                     <div class="upcoming__about-underline"></div>
-                    <p class="upcoming__about-text"> 2-2-15 Hokukoryokuchi, Konohana Ward,<br> 554-0042 Osaka Prefecture
-                        Osaka<br> Japan</p>
+                    <p class="upcoming__about-text">2-2-15 Hokukoryokuchi, Konohana Ward,<br>
+                        554-0042 Osaka Prefecture Osaka<br>
+                        Japan</p>
                     <div class="upcoming__about-line small"></div>
-                    <p class="upcoming__about-date"> 01.04.2015</p>
+                    <p class="upcoming__about-date">01.04.2015</p>
                     <div class="upcoming__about-line huge"></div>
-                    <h2 class="upcoming__about-header"> Smoke + Mirrors Tour</h2>
+                    <h2 class="upcoming__about-header">Smoke + Mirrors Tour</h2>
                     <div class="upcoming__about-underline"></div>
-                    <p class="upcoming__about-text"> When the last-minute request is for a focus group, it’s usually a
-                        sign that the request originated in Marketing. When Web sites are being designed, the folks in
-                        Marketing often feel like they don’t have much clout. Even though they’re the ones who spend the
-                        most time trying to figure out who the site’s audience is and what they want, the designers and
-                        developers are the ones with most of the hands-on control over how the site actually gets put
-                        together.</p>
+                    <p class="upcoming__about-text">When the last-minute request is for a focus group, it’s usually a
+                        sign that the
+                        request originated in Marketing. When Web sites are being designed, the folks in
+                        Marketing often feel like they don’t have much clout. Even though they’re the
+                        ones who spend the most time trying to figure out who the site’s audience is and
+                        what they want, the designers and developers are the ones with most of the
+                        hands-on control over how the site actually gets put together.</p>
                     <div class="upcoming__about-line small"></div>
-                    <p class="upcoming__about-date"> 27.05.2015</p>
+                    <p class="upcoming__about-date">27.05.2015</p>
                 </div>
             </div>
         </section>
+
         <section id="history" class="history">
             <div class="container history__container">
                 <div class="history__header-block">
-                    <h2 class="history__header"> History<span class="history__header-line"></span></h2>
-                    <p class="history__header-text"> In 2008, lead singer Dan Reynolds met drummer Andrew Tolman at
+                    <h2 class="history__header">History<span class="history__header-line"></span></h2>
+                    <p class="history__header-text">In 2008, lead singer Dan Reynolds met drummer Andrew Tolman at
                         Brigham Young University where they were both students.Tolman recruited longtime high school
-                        friend Daniel Wayne"Wing" Sermon, who had graduated from Berklee College of Music</p>
+                        friend Daniel Wayne "Wing" Sermon, who had graduated from Berklee College of Music</p>
                 </div>
-                <div class="history__main"><span class="history__main-line"></span>
-                    <h2 class="history__main-date"> MAR 16</h2><span class="history__main-line"></span>
-                    <h2 class="history__main-date"> APR 11</h2><span class="history__main-line"></span><span
-                        class="history__main-dot"></span>
-                    <h2 class="history__main-date base"> MAY 09</h2><span class="history__main-dot"></span><span
-                        class="history__main-line"></span>
-                    <h2 class="history__main-date"> JUN 06</h2><span class="history__main-line"></span>
-                    <h2 class="history__main-date"> JUL 25</h2><span class="history__main-line"></span>
+                <div class="history__main">
+                    <span class="history__main-line"></span>
+                    <h2 class="history__main-date">MAR 16</h2>
+                    <span class="history__main-line"></span>
+                    <h2 class="history__main-date">APR 11</h2>
+                    <span class="history__main-line"></span>
+                    <span class="history__main-dot"></span>
+                    <h2 class="history__main-date base">MAY 09</h2>
+                    <span class="history__main-dot"></span>
+                    <span class="history__main-line"></span>
+                    <h2 class="history__main-date">JUN 06</h2>
+                    <span class="history__main-line"></span>
+                    <h2 class="history__main-date">JUL 25</h2>
+                    <span class="history__main-line"></span>
                 </div>
-                <p class="history__main-text"> Tolman later recruited his wife, Brittany Tolman, to sing backup and play
-                    keys.</p>
+                <p class="history__main-text">Tolman later recruited his wife, Brittany Tolman, to sing backup and play keys.</p>
             </div>
         </section>
+
         <section id="contact" class="contact">
             <div class="container contact__container">
                 <div class="contact__header-block">
-                    <h2 class="contact__header"> contact<span class="contact__header-line"></span></h2>
-                    <p class="contact__header-text"> Canada Island, Division No. 23, Unorganized, MB, Canada <br> Tel.
-                        +1(778) 288 5180</p>
+                    <h2 class="contact__header">contact<span class="contact__header-line"></span></h2>
+                    <p class="contact__header-text">Canada Island, Division No. 23, Unorganized, MB, Canada <br>
+                        Tel. +1(778) 288 5180</p>
                 </div>
                 <div class="contact__form-block">
                     <form class="contact__form">
@@ -2329,6 +427,7 @@
                 </div>
             </div>
         </section>
+    </main>
 </body>
 
 </html>
